@@ -1,0 +1,15 @@
+{
+  "nomad-rx-fcc": {
+    "product_name": "RadioMaster Nomad RX FCC",
+    "lua_name": "RM Nomad RX",
+    "layout_file": "Radiomaster Nomad RX FCC.json",
+    "upload_methods": [
+      "uart",
+      "wifi",
+      "betaflight"
+    ],
+    "min_version": "4.0.0",
+    "platform": "esp32",
+    "firmware": "Unified_ESP32_LR1121_RX"
+  }
+}
