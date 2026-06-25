@@ -1,0 +1,15 @@
+Emergency validation-only fallback if the ELRS v4 RX firmware does not run the normal fan-control path.
+Use only after confirming the active device hardware.json contains "misc_fan_en": 2 but GPIO2 never asserts.
+
+Add this inside the RX setup path after Arduino GPIO is available:
+
+#ifdef NOMAD_RX_FORCE_FAN
+    pinMode(2, OUTPUT);
+    digitalWrite(2, HIGH);
+#endif
+
+Then add this to src/super_defines.txt:
+
+-DNOMAD_RX_FORCE_FAN
+
+Rebuild and flash the same target.

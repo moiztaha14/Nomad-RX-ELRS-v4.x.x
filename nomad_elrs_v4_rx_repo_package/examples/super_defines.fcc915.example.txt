@@ -1,0 +1,5 @@
+-DRegulatory_Domain_FCC_915
+-DMY_BINDING_PHRASE="ReplaceWithYourBindingPhrase"
+# Optional:
+# -DHOME_WIFI_SSID="YourWiFiSSID"
+# -DHOME_WIFI_PASSWORD="YourWiFiPassword"
