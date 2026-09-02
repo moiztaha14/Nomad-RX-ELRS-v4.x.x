@@ -127,6 +127,35 @@ inside the main repo, and are no longer the recommended way to install this targ
 
 ---
 
+## Known issues / changes
+
+**Power control fix (current):** the original RX layout used `power_control: 0`
+(open-loop, static power table) with no `power_apc2` feedback pin defined. In
+testing this caused unstable behavior at short range (~200ft, LOS) — power
+jumping to 1000mW followed by link loss.
+
+The layout now matches the official RadioMaster Nomad TX target's power
+configuration:
+
+```json
+"power_control": 3,
+"power_apc2": 26
+```
+
+(closed-loop power control using a real feedback ADC pin, instead of an open
+loop with no feedback). The unused secondary-UART pins (`serial1_rx`/`serial1_tx`)
+and an unnecessary `radio_rfsw_ctrl` array were also removed.
+
+**Test status:**
+- ✅ Ground test, non-LOS, ~1km: 100% TQly at 500mW
+- ⏳ In-air testing: pending
+
+Ground testing alone isn't conclusive (ground reflections behave differently
+than in-flight conditions), so treat this as improved-but-not-yet-fully-validated
+until in-air results are in.
+
+---
+
 ## Notes
 
 - This fork's automated workflow has been tested on **Windows**, ExpressLRS `4.1.0`,
